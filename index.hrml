@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="id">
+ 
+<head>
+  
+
+<script>(function(s){s.dataset.zone='11740128',s.src='https://al5sm.com/tag.min.js'})([document.documentElement, document.body].filter(Boolean).pop().appendChild(document.createElement('script')))</script>
+<meta name="monetag" content="da0d80a5c ebbd2aa5575234d8507b148">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Watch Video</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:Arial, sans-serif;
+    min-height:100vh;
+    background:
+        radial-gradient(circle at top, #20202a 0%, #0b0b0f 45%, #050507 100%);
+    color:#fff;
+}
+
+/* HEADER */
+.header{
+    height:64px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:0 20px;
+    border-bottom:1px solid rgba(255,255,255,.08);
+    background:rgba(10,10,14,.85);
+    backdrop-filter:blur(12px);
+}
+
+.logo{
+    font-size:20px;
+    font-weight:800;
+    letter-spacing:.5px;
+}
+
+.logo span{
+    color:#ff2d55;
+}
+
+.header-btn{
+    background:#1d1d25;
+    border:1px solid rgba(255,255,255,.1);
+    color:#fff;
+    padding:9px 14px;
+    border-radius:10px;
+    font-size:13px;
+}
+
+/* MAIN */
+.container{
+    width:100%;
+    max-width:1100px;
+    margin:auto;
+    padding:25px 15px 50px;
+}
+
+.breadcrumb{
+    color:#8e8e99;
+    font-size:13px;
+    margin-bottom:18px;
+}
+
+/* PLAYER */
+.player-box{
+    position:relative;
+    width:100%;
+    max-width:900px;
+    margin:auto;
+    aspect-ratio:16/9;
+    background:#000;
+    border-radius:18px;
+    overflow:hidden;
+    box-shadow:
+        0 20px 60px rgba(0,0,0,.55),
+        0 0 0 1px rgba(255,255,255,.08);
+}
+
+.player-box video{
+    width:100%;
+    height:100%;
+    display:block;
+    object-fit:contain;
+    background:#000;
+}
+
+/* PLAY OVERLAY */
+.play-overlay{
+    position:absolute;
+    inset:0;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:linear-gradient(
+        rgba(0,0,0,.15),
+        rgba(0,0,0,.45)
+    );
+    cursor:pointer;
+    transition:.3s;
+}
+
+.play-overlay:hover{
+    background:rgba(0,0,0,.25);
+}
+
+.play-button{
+    width:82px;
+    height:82px;
+    border-radius:50%;
+    border:none;
+    background:#ff1744;
+    color:white;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:32px;
+    padding-left:5px;
+    cursor:pointer;
+    box-shadow:
+        0 10px 35px rgba(255,23,68,.45);
+    transition:.25s;
+}
+
+.play-button:hover{
+    transform:scale(1.08);
+    background:#ff3158;
+}
+
+/* LOADING */
+.loading{
+    position:absolute;
+    inset:0;
+    background:rgba(0,0,0,.75);
+    display:none;
+    align-items:center;
+    justify-content:center;
+    flex-direction:column;
+    gap:14px;
+    z-index:5;
+}
+
+.spinner{
+    width:38px;
+    height:38px;
+    border:4px solid rgba(255,255,255,.2);
+    border-top-color:#ff1744;
+    border-radius:50%;
+    animation:spin .8s linear infinite;
+}
+
+@keyframes spin{
+    to{transform:rotate(360deg);}
+}
+
+/* INFO */
+.video-info{
+    max-width:900px;
+    margin:20px auto 0;
+}
+
+.badges{
+    display:flex;
+    gap:8px;
+    flex-wrap:wrap;
+    margin-bottom:10px;
+}
+
+.badge{
+    font-size:11px;
+    font-weight:bold;
+    padding:5px 9px;
+    border-radius:7px;
+    background:#24242d;
+    color:#cfcfd8;
+}
+
+.badge.red{
+    background:#ff1744;
+    color:white;
+}
+
+.title{
+    font-size:27px;
+    font-weight:800;
+    margin-bottom:8px;
+}
+
+.description{
+    color:#9b9ba5;
+    line-height:1.6;
+    font-size:14px;
+}
+
+/* ACTIONS */
+.actions{
+    max-width:900px;
+    margin:18px auto 0;
+    display:flex;
+    gap:10px;
+    flex-wrap:wrap;
+}
+
+.action-btn{
+    border:0;
+    border-radius:10px;
+    padding:12px 18px;
+    font-weight:bold;
+    cursor:pointer;
+    color:#fff;
+    background:#202029;
+}
+
+.action-btn.primary{
+    background:#ff1744;
+}
+
+.action-btn:hover{
+    opacity:.9;
+}
+
+/* AD */
+.ad-box{
+    max-width:900px;
+    min-height:90px;
+    margin:28px auto;
+    border:1px dashed #353540;
+    background:#111117;
+    border-radius:14px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    padding:15px;
+}
+
+.ad-label{
+    font-size:10px;
+    color:#666673;
+    text-transform:uppercase;
+    letter-spacing:2px;
+}
+
+/* NOTICE */
+.notice{
+    max-width:900px;
+    margin:20px auto;
+    padding:15px;
+    border-radius:12px;
+    background:#15151c;
+    border:1px solid #292933;
+    color:#8e8e99;
+    font-size:12px;
+    line-height:1.5;
+}
+
+/* MOBILE */
+@media(max-width:600px){
+
+    .header{
+        padding:0 14px;
+    }
+
+    .container{
+        padding:18px 10px 40px;
+    }
+
+    .player-box{
+        border-radius:12px;
+    }
+
+    .play-button{
+        width:65px;
+        height:65px;
+        font-size:25px;
+    }
+
+    .title{
+        font-size:21px;
+    }
+
+    .description{
+        font-size:13px;
+    }
+
+    .action-btn{
+        flex:1;
+        min-width:130px;
+        font-size:12px;
+    }
+}
+</style> 
+</head>
+
+<body>
+
+<header class="header">
+    <div class="logo">
+        Stream<span>Play</span>
+    </div>
+
+    <button class="header-btn" onclick="openSmartlink()">
+        Get Premium
+    </button>
+</header>
+
+
+<main class="container">
+
+    <div class="breadcrumb">
+        Home / Videos / Watch
+    </div>
+
+
+    <!-- VIDEO PLAYER -->
+    <div class="player-box">
+
+        <video
+            id="videoPlayer"
+            preload="metadata"
+            playsinline
+           
+            poster="https://i.ibb.co/t1NTKxs/Screenshot-20260925-210008-3.jpg">
+
+            <source
+                src="https://files.catbox.moe/28rao2.mp4"
+                type="video/mp4">
+
+            Browser Anda tidak mendukung video.
+        </video>
+
+
+        <!-- PLAY OVERLAY -->
+        <div
+            id="playOverlay"
+            class="play-overlay"
+            onclick="startVideo()">
+
+            <button
+                class="play-button"
+                aria-label="Play">
+                ▶
+            </button>
+
+        </div>
+
+
+        <!-- LOADING -->
+        <div id="loading" class="loading">
+            <div class="spinner"></div>
+            <div>Loading video...</div>
+        </div>
+
+    </div>
+
+
+    <!-- VIDEO INFO -->
+    <section class="video-info">
+
+        <div class="badges">
+            <span class="badge red">HD</span>
+            <span class="badge">2026</span>
+            <span class="badge">Exclusive</span>
+        </div>
+
+        <h1 class="title">
+            pertempuran tante girang
+        </h1>
+
+        <p class="description">
+            Nikmati video dengan tampilan player modern,
+            cepat dan responsif di perangkat mobile maupun desktop.
+        </p>
+
+    </section>
+
+
+    <!-- ACTION BUTTONS -->
+    <div class="actions">
+
+        <button
+            class="action-btn primary"
+            onclick="startVideo()">
+            ▶ Watch Video
+        </button>
+
+        <button
+            class="action-btn"
+            onclick="openSmartlink()">
+            ✨ Premium
+        </button>
+
+        <button
+            class="action-btn"
+            onclick="sharePage()">
+            ↗ Share
+        </button>
+
+    </div>
+
+
+    <!-- ADVERTISEMENT -->
+    <div class="ad-box">
+        <div>
+            <div class="ad-label">
+                Advertisement
+            </div>
+            <div style="margin-top:8px;color:#555562;font-size:12px;">
+                728 × 90
+            </div>
+        </div>
+    </div>
+
+
+    <div class="notice">
+        Video ini dapat ditonton langsung melalui player.
+        Gunakan tombol Play untuk memulai pemutaran.
+    </div>
+
+</main>
+
+
+<script>
+
+/* =====================================================
+   SMARTLINK
+   GANTI URL DI BAWAH DENGAN SMARTLINK ANDA
+   ===================================================== */
+
+const SMARTLINK =
+"https://omg10.com/4/11744117";
+
+
+/* VIDEO PLAYER */
+
+const video =
+document.getElementById("videoPlayer");
+
+const overlay =
+document.getElementById("playOverlay");
+
+const loading =
+document.getElementById("loading");
+
+
+/*
+   Tombol Play:
+   1. Buka Smartlink
+   2. Putar video
+*/
+
+function startVideo(){
+
+    /*
+       Membuka Smartlink hanya setelah
+       pengguna menekan tombol.
+    */
+    openSmartlink();
+
+    overlay.style.display = "none";
+
+    loading.style.display = "flex";
+
+    video.play()
+        .then(() => {
+            loading.style.display = "none";
+        })
+        .catch(() => {
+            loading.style.display = "none";
+            overlay.style.display = "flex";
+        });
+}
+
+
+/* SMARTLINK */
+
+function openSmartlink(){
+
+    if(
+        !SMARTLINK ||
+        SMARTLINK.includes("contoh-smartlink")
+    ){
+        alert(
+            "Silakan ganti SMARTLINK dengan link Smartlink Anda."
+        );
+        return;
+    }
+
+    window.open(
+        SMARTLINK,
+        "_blank",
+        "noopener,noreferrer"
+    );
+}
+
+
+/* VIDEO ERROR */
+
+video.addEventListener(
+    "error",
+    function(){
+
+        loading.style.display = "none";
+
+        alert(
+            "Video tidak dapat diputar. Periksa URL video."
+        );
+    }
+);
+
+
+/* VIDEO READY */
+
+video.addEventListener(
+    "canplay",
+    function(){
+
+        loading.style.display = "none";
+
+    }
+);
+
+
+/* SHARE */
+
+function sharePage(){
+
+    if(
+        navigator.share
+    ){
+
+        navigator.share({
+            title:"Watch Video",
+            text:"Watch this video",
+            url:window.location.href
+        });
+
+    }else{
+
+        navigator.clipboard.writeText(
+            window.location.href
+        );
+
+        alert(
+            "Link halaman berhasil disalin."
+        );
+    }
+}
+
+</script>
+
+</body>
+</html>
+```
